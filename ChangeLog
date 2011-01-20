@@ -1,0 +1,42 @@
+2011-01-16  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.05 released.
+
+        * Changed package name to Term::RawInput in response
+          to Brian Foy's suggestion.
+
+
+
+2011-01-16  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.04 released.
+
+        * Fixed package name in Input.pm.
+
+
+2011-01-16  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.03 released.
+
+        * Fixed POD name to show up better in CPAN.
+
+        * Did some minor code clean-up.
+
+
+2011-01-15  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.02 released.
+
+        * Another META.yml tweak
+
+
+2011-01-15  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.01 released.
+
+        * Fixed META.yml
+
+
+2011-01-15  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.0 released.
