@@ -1,5 +1,12 @@
 2011-01-21  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
 
+        * Version 1.08 released.
+
+        * Fixed META.yml to indicate module RawInput.
+
+
+2011-01-21  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
         * Version 1.07 released. (1.06 is embedded in Term::Menus)
 
         * Fixed test.t to load Term::RawInput.
