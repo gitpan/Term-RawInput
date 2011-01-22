@@ -1,10 +1,16 @@
+2011-01-21  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.07 released. (1.06 is embedded in Term::Menus)
+
+        * Fixed test.t to load Term::RawInput.
+
+
 2011-01-16  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
 
         * Version 1.05 released.
 
         * Changed package name to Term::RawInput in response
           to Brian Foy's suggestion.
-
 
 
 2011-01-16  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
