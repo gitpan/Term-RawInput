@@ -15,7 +15,7 @@ package Term::RawInput;
 ## See user documentation at the end of this file.  Search for =head
 
 
-$VERSION = '1.08';
+$VERSION = '1.10';
 
 
 use 5.006;
@@ -41,7 +41,9 @@ sub rawInput {
    my @char=();
    my $char='';
    my $output=$_[0];
+   STDOUT->autoflush(1);
    printf("\r% ${length_prompt}s",$output);
+   STDOUT->autoflush(0);
    my $save='';
    while (1) {
       $char=ReadKey(0);
@@ -58,15 +60,19 @@ sub rawInput {
             printf("\r% ${length_prompt}s",$output);
             last if (length $output==$length_prompt);
          }
-         $key='ENTER' if $a==10;
+         $key='ENTER';
          last
       }
-      if ($a==127) {
+      if ($a==127 || $a==8) {
          next if (length $output==$length_prompt);
          substr($output,-1)=' ';
+         STDOUT->autoflush(1);
          printf("\r% ${length_prompt}s",$output);
+         STDOUT->autoflush(0);
          chop $output;
+         STDOUT->autoflush(1);
          printf("\r% ${length_prompt}s",$output);
+         STDOUT->autoflush(0);
       } elsif ($a==27) {
          my $flag=0;
          while ($char=ReadKey(-1)) {
@@ -88,6 +94,10 @@ sub rawInput {
                   $key='F3'; 
                } elsif ($char[$e+2]==83) {
                   $key='F4';
+               } elsif ($char[$e+2]==115) {
+                  $key='PAGEDOWN';
+               } elsif ($char[$e+2]==121) {
+                  $key='PAGEUP';
                }
             } elsif ($char[$e+1]==91) {
                if ($char[$e+2]==65) {
@@ -258,7 +268,7 @@ __END__;
 
 Term::RawInput - A simple drop-in replacement for <STDIN> in scripts
               with the additional ability to capture and return
-              the non-standard keys like 'End', 'F3', 'Insert', etc.
+              the non-standard keys like 'End', 'Escape', 'Insert', etc.
 
 =head1 SYNOPSIS
 
@@ -278,7 +288,7 @@ Term::RawInput - A simple drop-in replacement for <STDIN> in scripts
 
 =head1 DESCRIPTION
 
-I needed a ridiculously simple function that behaved exactly like $input=<STDIN> in scripts, that captured user input and and populated a variable with a resulting string. BUT - I also wanted to use other KEYS like F1 and DELETE and the RIGHT ARROW and have them captured and returned. So I really wanted this:
+I needed a ridiculously simple function that behaved exactly like $input=<STDIN> in scripts, that captured user input and and populated a variable with a resulting string. BUT - I also wanted to use other KEYS like DELETE and the RIGHT ARROW key and have them captured and returned. So I really wanted this:
 
 my $prompt='PROMPT : ';
 ($input,$key)=input($prompt);
@@ -287,9 +297,7 @@ my $prompt='PROMPT : ';
 
 I looked through the CPAN, and could not find something this simple and straight-forward. So I wrote it. Enjoy.
 
-NOTE: Backspace is not captured - but used to backspace. DELETE is captured. Also, no Control combinations are captured - just
- the non-standard keys F1-F12, INSERT, DELETE, ENTER, ESCAPE, HOME, PGDOWN, PGUP, END and the ARROW KEYS. All captured keys li
-sted will terminate user input and return the results - just like you would expect using ENTER with <STDIN>.
+NOTE: Backspace is not captured - but used to backspace. DELETE is captured. Also, no Control combinations are captured - just the non-standard keys INSERT, DELETE, ENTER, ESCAPE, HOME, PGDOWN, PGUP, END, the ARROW KEYS, and F1-F12 (but *NOT* F1-F12 with Windows Version of Perl - especially Strawberry Perl [ This is a limitation of the Term::ReadKey Module. ]; but, works with Cygwin Perl!). All captured keys listed will terminate user input and return the results - just like you would expect using ENTER with <STDIN>.
 
 =head1 AUTHOR
 

@@ -1,3 +1,13 @@
+2011-01-23  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.10 released. (1.09 is embedded in Term::Menus)
+
+        * Term::RawInput NOW WORKS WITH WINDOWS!! (YEAH!). Tested
+          with Strawberry Perl. (Note: F1-F12 don't work in
+          Windows versions of Perl - limitation of Term::ReadKey;
+          works in Cygwin however!).
+
+
 2011-01-21  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
 
         * Version 1.08 released.
