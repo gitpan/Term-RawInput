@@ -15,7 +15,7 @@ package Term::RawInput;
 ## See user documentation at the end of this file.  Search for =head
 
 
-$VERSION = '1.10';
+$VERSION = '1.14';
 
 
 use 5.006;
