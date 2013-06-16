@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.61.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,10 +14,10 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 24a31e65ce94c4d13f8b61792d3d2e4a25ee561e ChangeLog
+SHA1 cd985014817ad7e1105df02779f5061d6159216d ChangeLog
 SHA1 a74125560a260a18a646ef0b3702e1b77a45b931 LICENSE
 SHA1 a4678731be8107e6c9a7fab8b003eb4bc9a14a7f MANIFEST
-SHA1 59326cab385890748a20c015a347994f253e36cb META.yml
+SHA1 4233863eac22da9928a8b7915217fea9755cd3b3 META.yml
 SHA1 77c61f021bb6685097c4513ee90d93a2da342885 Makefile.PL
 SHA1 387d1b7aeb2472fe9cdb4eff612db968629f7d1c README
 SHA1 20c73697e1713638140c719d8eaa19a275ed43a5 inc/Module/AutoInstall.pm
@@ -31,13 +31,17 @@ SHA1 b721c93ca5bc9a6aa863b49af15f1b1de6125935 inc/Module/Install/Makefile.pm
 SHA1 026cc0551a0ad399d195e395b46bdf842e115192 inc/Module/Install/Metadata.pm
 SHA1 5457015ea5a50e93465bf2dafa29feebd547f85b inc/Module/Install/Win32.pm
 SHA1 051e7fa8063908befa3440508d0584a2497b97db inc/Module/Install/WriteAll.pm
-SHA1 25e772b01030e84a831cee3aa8612e54b930870e lib/Term/RawInput.pm
+SHA1 5829d2cb05c3a216dc7f2bc71609d026c0efd755 lib/Term/RawInput.pm
 SHA1 7f2e13f5f6a798d52ea897d24d07b49af4039341 t/0-signature.t
 SHA1 278628f14e26a24ce744a5163362aad19b69a55e t/test.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.9 (Cygwin)
+Version: GnuPG v1.4.13 (Cygwin)
 
-iEYEARECAAYFAk1CxA8ACgkQdsVAdUjO9IklQwCgkrnk1+qm+tLnyCNKfAkEdcD0
-nGkAn0sy/aO5PJkGKUh2PUcgIQPCICSu
-=gAx0
+iQEcBAEBAgAGBQJRvk7DAAoJEBa/9Pad787EIQwIAM5B84Uex+oNnkQ3Frn3RFKV
+RsYSe02wq7bWexx/NqgAUc1HxUp9VOF5kcuEqbIAOPTi+Xw6GvFhLG4ifsI8kaA0
+1OXrbM+J/qUba0ZmzOMEunlUttCBTz+mX4AoZveSHohluCh2L46QHjcYdAScTuOH
+SwbK2fPq3BUIIWiFDF8AO1ruAqdgZ9EaLoFoR1enO3mKTd6Pn8GNKeu9jBmYp8lk
+7nQZ1rycjoJ/mCPQyf8J1CU2F//bfPck5V5eegT39fFWYk1J/NlgDp7DpYkaVXfC
+X3VsHfON7F1dl7h0szRxEDSb9OE6B6WT683FJkuyhz5K5KrW+KGZ9Sl7ra3EvhY=
+=nrFT
 -----END PGP SIGNATURE-----

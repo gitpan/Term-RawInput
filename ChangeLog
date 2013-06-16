@@ -1,3 +1,18 @@
+2013-06-16  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.15 released.
+
+        * Created new distribution with new public key.
+
+
+2011-01-28  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.14 released. (1.13 is embedded in Term::Menus)
+
+        * Attempt to fix CPAN indexing so module appears in
+          the CPAN module list.
+
+
 2011-01-23  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
 
         * Version 1.10 released. (1.09 is embedded in Term::Menus)
