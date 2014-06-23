@@ -15,7 +15,7 @@ package Term::RawInput;
 ## See user documentation at the end of this file.  Search for =head
 
 
-$VERSION = '1.15';
+$VERSION = '1.16';
 
 
 use 5.006;
@@ -79,6 +79,14 @@ sub rawInput {
             $a=ord($char);
             push @char, $a;
             $flag++;
+         }
+         unless ($flag) {
+            while ($char=ReadKey(1)) {
+               $a=ord($char);
+               push @char, $a;
+               $flag++;
+               last if $flag==2;
+            }
          }
          unless ($flag) {
             $key='Escape';

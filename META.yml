@@ -12,10 +12,10 @@ name: Term-RawInput
 provides:
   Term::RawInput:
     file: lib/Term/RawInput.pm
-    version: 1.15
+    version: 1.16
 requires:
   Term::ReadKey: 0
   IO::Handle: 0
 resources:
   license: http://opensource.org/licenses/gpl-license.php
-version: 1.15
+version: 1.16
