@@ -4,6 +4,8 @@ use inc::Module::Install;
 # Define metadata
 name            'Term-RawInput';
 sign;
+author          'Brian M. Kelly <Brian.Kelly@fullautosoftware.net>';
+license         'gpl-3.0';
 all_from        'lib/Term/RawInput.pm';
 
 requires        'Term::ReadKey'             => 0;

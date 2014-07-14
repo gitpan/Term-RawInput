@@ -2,20 +2,20 @@ package Term::RawInput;
 
 #    RawInput.pm
 #
-#    Copyright (C) 2011
+#    Copyright (C) 2011-2014
 #
 #    by Brian M. Kelly. <Brian.Kelly@fullautosoftware.net>
 #
-#    You may distribute under the terms of the GNU General
+#    You may distribute under the terms of the GNU Affero General
 #    Public License, as specified in the LICENSE file.
-#    (http://www.opensource.org/licenses/gpl-license.php).
+#    <http://www.gnu.org/licenses/agpl.html>.
 #
 #    http://www.fullautosoftware.net/
 
 ## See user documentation at the end of this file.  Search for =head
 
 
-$VERSION = '1.17';
+$VERSION = '1.18';
 
 
 use 5.006;
@@ -108,10 +108,8 @@ sub rawInput {
                   $key='PAGEUP';
                }
             } elsif ($char[$e+1]==91) {
-               if ($char[$e+2]==53) {
-                  $key='PAGEUP';
-               } elsif ($char[$e+2]==54) {
-                  $key='PAGEDOWN';
+               if ($char[$e+2]==50) {
+                  $key='F9';
                } elsif ($char[$e+2]==65) {
                   $key='UPARROW';
                } elsif ($char[$e+2]==66) {
@@ -317,10 +315,10 @@ Brian M. Kelly <Brian.Kelly@fullautosoftware.net>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2011
+Copyright (C) 2011-2014
 by Brian M. Kelly.
 
 This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License.
-(http://www.opensource.org/licenses/gpl-license.php).
+modify it under the terms of the GNU Affero General Public License.
+(http://www.gnu.org/licenses/agpl.html).
 
