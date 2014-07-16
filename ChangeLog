@@ -1,3 +1,11 @@
+2014-07-15  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.19 released.
+
+        * Added code to handle cases where ReadMode(-1)
+          doesn't work - PAGEUP & PAGEDOWN
+
+
 2014-07-14  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
 
         * Version 1.18 released.
