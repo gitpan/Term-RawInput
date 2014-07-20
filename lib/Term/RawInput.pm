@@ -15,7 +15,7 @@ package Term::RawInput;
 ## See user documentation at the end of this file.  Search for =head
 
 
-$VERSION = '1.19';
+$VERSION = '1.20';
 
 
 use 5.006;
@@ -35,6 +35,7 @@ use IO::Handle;
 sub rawInput {
 
    my $length_prompt=length $_[0];
+   my $return_single=$_[1]||0;
    ReadMode('cbreak');
    my $a='';
    my $key='';
@@ -64,6 +65,7 @@ sub rawInput {
          last
       }
       if ($a==127 || $a==8) {
+         return '','BACKSPACE' if $return_single;
          next if (length $output==$length_prompt);
          substr($output,-1)=' ';
          STDOUT->autoflush(1);
@@ -89,7 +91,7 @@ sub rawInput {
             }
          }
          unless ($flag) {
-            $key='Escape';
+            $key='ESC';
             last;
          } elsif ($flag==2) {
             my $e=$#char-2;
@@ -251,6 +253,18 @@ sub rawInput {
                } last
             }
          }
+      } elsif ($return_single) {
+         $key='TAB' if $a==9;
+         $output.=chr($a);
+         $save=$output;
+         while (1) {
+            last if (length $output==$length_prompt);
+            substr($output,-1)=' ';
+            printf("\r% ${length_prompt}s",$output);
+            chop $output;
+            printf("\r% ${length_prompt}s",$output);
+            last if (length $output==$length_prompt);
+         } last
       } else {
          $output.=chr($a);
          printf("\r% ${length_prompt}s",$output);
@@ -282,7 +296,7 @@ __END__;
 
 Term::RawInput - A simple drop-in replacement for <STDIN> in scripts
               with the additional ability to capture and return
-              the non-standard keys like 'End', 'Escape', 'Insert', etc.
+              the non-standard keys like 'End', 'Escape' [ESC], 'Insert', etc.
 
 =head1 SYNOPSIS
 
@@ -290,13 +304,13 @@ Term::RawInput - A simple drop-in replacement for <STDIN> in scripts
 
    my $prompt='PROMPT : ';
    my ($input,$key)=('','');
-   ($input,$key)=rawInput($prompt);
+   ($input,$key)=rawInput($prompt,0);
 
    print "\nRawInput=$input" if $input;
    print "\nKey=$key\n" if $key;
 
    print "Captured F1\n" if $key eq 'F1';
-   print "Captured ESCAPE\n" if $key eq 'ESCAPE';
+   print "Captured ESCAPE\n" if $key eq 'ESC';
    print "Captured DELETE\n" if $key eq 'DELETE';
    print "Captured PAGEDOWN\n" if $key eq 'PAGEDOWN';   
 
@@ -305,13 +319,15 @@ Term::RawInput - A simple drop-in replacement for <STDIN> in scripts
 I needed a ridiculously simple function that behaved exactly like $input=<STDIN> in scripts, that captured user input and and populated a variable with a resulting string. BUT - I also wanted to use other KEYS like DELETE and the RIGHT ARROW key and have them captured and returned. So I really wanted this:
 
 my $prompt='PROMPT : ';
-($input,$key)=input($prompt);
+($input,$key)=rawInput($prompt,0);
 
 ... where I could test the variable '$key' for the key that was used to terminate the input. That way I could use the arrow keys to scroll a menu for instance.
 
 I looked through the CPAN, and could not find something this simple and straight-forward. So I wrote it. Enjoy.
 
-NOTE: Backspace is not captured - but used to backspace. DELETE is captured. Also, no Control combinations are captured - just the non-standard keys INSERT, DELETE, ENTER, ESCAPE, HOME, PGDOWN, PGUP, END, the ARROW KEYS, and F1-F12 (but *NOT* F1-F12 with Windows Version of Perl - especially Strawberry Perl [ This is a limitation of the Term::ReadKey Module. ]; but, works with Cygwin Perl!). All captured keys listed will terminate user input and return the results - just like you would expect using ENTER with <STDIN>.
+The second argument to rawInput() is optional, and when set to 1 or any positive value, returns all keys instantly, instead of waiting for ENTER. This has turned out to be extremely useful for creating command environment "forms" without the need for curses. See Term::Menus and/or Net::FullAuto for more details.
+
+NOTE: When the second argument is 0 or not used, BACKSPACE and TAB are not captured - but used to backspace and tab. DELETE is captured. Also, no Control combinations are captured - just the non-standard keys INSERT, DELETE, ENTER, ESC, HOME, PAGEDOWN, PAGEUP, END, the ARROW KEYS, and F1-F12 (but *NOT* F1-F12 with Windows Version of Perl - especially Strawberry Perl [ This is a limitation of the Term::ReadKey Module. ]; but, works with Cygwin Perl!). All captured keys listed will terminate user input and return the results - just like you would expect using ENTER with <STDIN>.
 
 =head1 AUTHOR
 

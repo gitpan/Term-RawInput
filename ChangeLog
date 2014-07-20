@@ -1,3 +1,16 @@
+2014-07-18  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
+
+        * Version 1.20 released.
+
+        * Added an argument to rawInput() that sets single return
+          mode, where keys are returned instantly instead of
+          waiting for ENTER
+
+        * Updated documentation
+
+        * Changed 'Escape' to 'ESC'
+
+
 2014-07-15  Brian M. Kelly  <Brian.Kelly@fullautosoftware.com>
 
         * Version 1.19 released.
