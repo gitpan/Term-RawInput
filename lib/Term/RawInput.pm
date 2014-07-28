@@ -15,7 +15,7 @@ package Term::RawInput;
 ## See user documentation at the end of this file.  Search for =head
 
 
-$VERSION = '1.20';
+$VERSION = '1.21';
 
 
 use 5.006;
@@ -112,10 +112,16 @@ sub rawInput {
             } elsif ($char[$e+1]==91) {
                if ($char[$e+2]==50) {
                   $key='F9';
+                  ReadKey(1);
+               } elsif ($char[$e+2]==51) {
+                  $key='DELETE';
+                  ReadKey(1);
                } elsif ($char[$e+2]==53) {
                   $key='PAGEUP';
+                  ReadKey(1);
                } elsif ($char[$e+2]==54) {
                   $key='PAGEDOWN';
+                  ReadKey(1);
                } elsif ($char[$e+2]==65) {
                   $key='UPARROW';
                } elsif ($char[$e+2]==66) {
