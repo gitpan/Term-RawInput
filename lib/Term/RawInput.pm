@@ -15,7 +15,7 @@ package Term::RawInput;
 ## See user documentation at the end of this file.  Search for =head
 
 
-$VERSION = '1.21';
+$VERSION = '1.22';
 
 
 use 5.006;
@@ -93,7 +93,15 @@ sub rawInput {
          unless ($flag) {
             $key='ESC';
             last;
-         } elsif ($flag==2) {
+         } elsif ($flag==1) {
+            while ($char=ReadKey(1)) {
+               $a=ord($char);
+               push @char, $a;
+               $flag++;
+               last if $flag==2;
+            }
+         }
+         if ($flag==2) {
             my $e=$#char-2;
             if ($char[$e+1]==79) {
                if ($char[$e+2]==80) {
@@ -124,8 +132,18 @@ sub rawInput {
                   ReadKey(1);
                } elsif ($char[$e+2]==65) {
                   $key='UPARROW';
+                  while (ReadKey(-1)) {
+                     select(undef,undef,undef,0.5);
+                     last;
+                  };
+                  #ReadKey(1);
                } elsif ($char[$e+2]==66) {
                   $key='DOWNARROW';
+                  while (ReadKey(-1)) {
+                     select(undef,undef,undef,0.5);
+                     last;
+                  };
+                  #ReadKey(1);
                } elsif ($char[$e+2]==67) {
                   $key='RIGHTARROW';
                } elsif ($char[$e+2]==68) {
